@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region to deploy all resources"
   type        = string
-  default     = "ap-south-1"
+  default     = "ap-southeast-1"
 }
 
 variable "project_name" {
@@ -16,7 +16,7 @@ variable "project_name" {
 variable "bastion_ami_id" {
   description = "Ubuntu 22.04 LTS AMI ID for the bastion/admin host (region-specific, update if changing region)"
   type        = string
-  default     = "ami-0e35ddab05955cf57" # Ubuntu 22.04 LTS - ap-south-1 (Mumbai)
+  default     = "ami-0532913178263be11" # Ubuntu 22.04 LTS - ap-southeast-1 (Singapore)
 }
 
 variable "bastion_instance_type" {
@@ -34,7 +34,7 @@ variable "bastion_root_volume_size" {
 variable "key_pair_name" {
   description = "Existing EC2 key pair name for SSH access to the bastion host"
   type        = string
-  default     = "abcd"
+  default     = "eksngone"
 }
 
 variable "ssh_allowed_cidr" {
@@ -55,7 +55,7 @@ variable "vpc_cidr" {
 variable "azs" {
   description = "Availability zones to spread the EKS cluster and subnets across"
   type        = list(string)
-  default     = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
+  default     = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
 }
 
 variable "public_subnet_cidrs" {
@@ -82,7 +82,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   description = "Kubernetes version for the EKS control plane"
   type        = string
-  default     = "1.32"
+  default     = "1.33"
 }
 
 # ───────────────────────────────
@@ -97,7 +97,7 @@ variable "nodegroup_name" {
 variable "node_instance_types" {
   description = "EC2 instance types for EKS worker nodes (t3.micro is too small for production EKS — using t3.medium)"
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["m7i-flex.large"]
 }
 
 variable "node_volume_size" {

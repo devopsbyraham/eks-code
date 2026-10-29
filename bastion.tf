@@ -32,7 +32,7 @@ resource "aws_security_group" "bastion_sg" {
 }
 
 resource "aws_iam_role" "bastion" {
-  name = "${var.cluster_name}-bastion-server-role"
+  name = "${var.cluster_name}-bastion-server-role-eks"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -48,7 +48,7 @@ resource "aws_iam_role" "bastion" {
   })
 
   tags = {
-    Name = "${var.cluster_name}-bastion-server-role"
+    Name = "${var.cluster_name}-bastion-server-role-eks"
   }
 }
 
@@ -79,7 +79,7 @@ resource "aws_iam_role_policy_attachment" "bastion_ecr_readonly" {
 }
 
 resource "aws_iam_instance_profile" "bastion" {
-  name = "${var.cluster_name}-bastion-profile"
+  name = "${var.cluster_name}-bastion-profile-eks"
   role = aws_iam_role.bastion.name
 }
 

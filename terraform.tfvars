@@ -28,6 +28,6 @@ cluster_version = "1.33"
 nodegroup_name      = "raham-cluster-ng-1"
 node_instance_types = ["m7i-flex.large"] # t3.micro is too small for EKS worker nodes
 node_volume_size    = 20
-node_desired_size   = 3
+node_desired_size   = 2
 node_min_size       = 2
 node_max_size       = 6
